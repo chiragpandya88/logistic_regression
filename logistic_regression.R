@@ -106,3 +106,12 @@ plot(allEffects(hyp.out))
 ##   Note that the data is not perfectly clean and ready to be modeled. You
 ##   will need to clean up at least some of the variables before fitting
 ##   the model.
+
+#setting levels 
+NH11$everwrk <- factor(NH11$everwrk, levels=c("1 Yes","2 No"))
+
+#regression
+model <- glm(everwrk~age_p+r_maritl,
+               data=NH11, family="binomial")
+coef(summary(model))
+plot(allEffects(model))
